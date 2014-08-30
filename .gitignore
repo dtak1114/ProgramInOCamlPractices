@@ -1,0 +1,6 @@
+*.annot
+*.cmi
+*.cmt
+*.opt
+*.omc
+.omakedv
