@@ -1,8 +1,4 @@
-*/*.annot
-*/*.cmi
-*/*.cmt
-*/*.cmx
-*/*.opt
-*/*.omc
-*/.omakedb
-*/.omakedb.lock
+*/*
+!*/*.ml
+!*/OMakefile
+!*/OMakeroot
