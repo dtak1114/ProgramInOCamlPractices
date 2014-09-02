@@ -172,7 +172,6 @@ assert((fib2 7) = 13);;
 assert((fib2 10) = 55);;
 
 
-
 let better_fact n =
   let rec factiter(i,n,res) =
     if i = n then res
@@ -180,7 +179,21 @@ let better_fact n =
     factiter(1,n,1);;
 
 (* 3.11.4 *)
-(* let ascii_max str =  *)
+let ascii_max (str:string):int = 
+  let n:int = (String.length str) in
+  let rec find_best_char_ascii((i:int),(best:int)) =
+    if i = n then best (* finish *)
+    else let new_char_ascii :int = int_of_char(String.get str i) 
+    in
+      if new_char_ascii > best then find_best_char_ascii(i+1,new_char_ascii)  (* bestが更新された，継続する．*)
+      else find_best_char_ascii(i+1,best)  (* bestは更新されなかった．継続する*)
+  in find_best_char_ascii(0,0);;
+
+print_int (ascii_max "Daisuke");;
+print_endline("\n");;
+
+
+
 
 
 
