@@ -150,7 +150,6 @@ let rec gcd (m,n)  = (* m<nのときのmとnの最大公約数*)
 assert (gcd(24,18) = 6);;
 
 (* 3.11.2 *)
-
 let rec comb n m =
   if (n = m||m = 0) then 1
   else (comb (n-1) m) + comb (n-1) (m-1);;
@@ -158,7 +157,38 @@ let rec comb n m =
 assert((comb 3 2) = 3);;
 assert((comb 10 3) = 120 );;
 
-(* 3.11.2 *)
+(* 3.11.3 *)
+let fib2 n =
+  let rec fibiter(i,n,pred,succ) =
+  if n=1||n=2 then 1 else
+  if i=n then succ else
+  fibiter(i+1,n,succ,pred+succ) in
+  fibiter(2,n,1,1);;
+
+assert((fib2 1) = 1);;
+assert((fib2 3) = 2);;
+assert((fib2 5) = 5);;
+assert((fib2 7) = 13);;
+assert((fib2 10) = 55);;
+
+
+
+let better_fact n =
+  let rec factiter(i,n,res) =
+    if i = n then res
+    else factiter(i+1,n,res*n) in
+    factiter(1,n,1);;
+
+(* 3.11.4 *)
+(* let ascii_max str =  *)
+
+
+
+
+
+
+
+
 
 
 
