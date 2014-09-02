@@ -6,7 +6,7 @@ let usd2jpy usd :int =
   let rate = 114.32 in
   int_of_float( usd *. rate);;
 
-puts (string_of_int (usd2jpy 100.0));;
+assert((usd2jpy 100.0) = 11432);;
 
 (* 3.1.2 *)
 let jpy2usd (jpy:int) : float =
@@ -14,7 +14,7 @@ let jpy2usd (jpy:int) : float =
   let rate = 114.32 in 
   floor2 ((float_of_int jpy) /. rate);;
 
-puts (string_of_float (jpy2usd 100));;
+assert ((jpy2usd 100) = 0.87);;
 
 (* 3.1.3 *)
 let usd2jpystr usd = 
@@ -34,9 +34,11 @@ let capitalize (c:char) =
   let diff = (int_of_char('a') - int_of_char('A')) in
   let y =
     if 97 <= x && x <= 122 then (x-diff) else x in
-  print_char(char_of_int(y));;
+  char_of_int(y);;
 
-capitalize('b');;
+assert(capitalize('b') = 'B');;
+assert(capitalize('A') = 'A');;
+assert(capitalize('1') = '1');;
 
 
 (* 3.2 *)
@@ -109,7 +111,7 @@ let rec iterpow (x,res,i,n)  =
   if i >= n then res
   else iterpow(x,(res*x),(i+1),n);;
 
-print_int(iterpow(2,1,1,10));;
+assert(iterpow(2,1,1,10) = 512);;
 
 print_endline("\n");;
 
@@ -123,7 +125,7 @@ let rec cond_fact n =
     (lazy 1),
     (lazy (n*cond_fact(n-1))));;
 
-print_int( cond_fact(4));; 
+assert(cond_fact(4)=24);; 
 
 (* 
   Ocamlの関数は通常，引数が先に評価される（名前渡し呼び）．
@@ -134,23 +136,19 @@ print_int( cond_fact(4));;
 
 print_endline("\n");;
 
-(* 
-  Ocamlの関数は通常，引数が先に評価される（名前渡し呼び）．
-  従ってこの場合 condの第2引数が先に評価されてしまう．
-  ここにfact(0)が到達すると評価が発散してしまうため，スタックがあふれる．
-  これを解決するためには，引数を遅延評価する必要がある．
- *)
-
 (* 3.10 *)
+(* skip *)
+
 
 (* 3.11 *)
-(* 
 let rec gcd (m,n)  = (* m<nのときのmとnの最大公約数*)
   let order_asc (a,b) = if a > b then (b,a) else (a,b) in
   let (i,j) = order_asc(m,n) in
   let modulo (a,b) = b - (b/a)*a in
   if modulo (i,j) = 0 then i
-  else gcd(j,modulo(i,j));; *)
+  else gcd(j,modulo(i,j));; 
+
+assert (gcd(24,18) = 6);
 
 
 (* let rec combinatorial n m =
