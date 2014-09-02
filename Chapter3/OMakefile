@@ -1,0 +1,16 @@
+.PHONY: all install clean run
+FILES[] =
+  q3_1	
+
+USEOCAMLFIND = true
+PROGRAM = q3_1
+OCAMLFLAGS += -annot -bin-annot
+.DEFAULT: run
+
+all: $(OCamlProgram $(PROGRAM), $(FILES))
+
+clean:
+     rm -fr *~ $(PROGRAM) *.opt *.cmi *.cmx *.o *.omc *.cmt *.annot
+
+run: all
+    ./$(PROGRAM)

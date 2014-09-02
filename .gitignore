@@ -1,7 +1,7 @@
-*.annot
-*.cmi
-*.cmt
-*.opt
-*.omc
-.omakedb
-.omakedb.lock
+*/*.annot
+*/*.cmi
+*/*.cmt
+*/*.opt
+*/*.omc
+*/.omakedb
+*/.omakedb.lock
