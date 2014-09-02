@@ -111,23 +111,46 @@ let rec iterpow (x,res,i,n)  =
 
 print_int(iterpow(2,1,1,10));;
 
+print_endline("\n");;
+
 (* 3.9 *)
-let cond (b, e1, e2) : int =
-  if b 
-  then e1
-  else e1;;
-let rec fact n = cond((n=1), 1, n * fact(n-1));;
+let cond (b, e1, e2) =
+  if b then Lazy.force(e1) else Lazy.force(e2);;
+
+let rec cond_fact n = 
+  cond(
+    (n=1),
+    (lazy 1),
+    (lazy (n*cond_fact(n-1))));;
+
+print_int( cond_fact(4));; 
+
+(* 
+  Ocamlの関数は通常，引数が先に評価される（名前渡し呼び）．
+  従ってこの場合 condの第2引数が先に評価されてしまう．
+  ここにfact(0)が到達すると評価が発散してしまうため，スタックがあふれる．
+  これを解決するためには，引数を遅延評価する必要がある．
+ *)
+
+print_endline("\n");;
+
+(* 
+  Ocamlの関数は通常，引数が先に評価される（名前渡し呼び）．
+  従ってこの場合 condの第2引数が先に評価されてしまう．
+  ここにfact(0)が到達すると評価が発散してしまうため，スタックがあふれる．
+  これを解決するためには，引数を遅延評価する必要がある．
+ *)
 
 (* 3.10 *)
 
 (* 3.11 *)
-
+(* 
 let rec gcd (m,n)  = (* m<nのときのmとnの最大公約数*)
   let order_asc (a,b) = if a > b then (b,a) else (a,b) in
   let (i,j) = order_asc(m,n) in
   let modulo (a,b) = b - (b/a)*a in
   if modulo (i,j) = 0 then i
-  else gcd(j,modulo(i,j));;
+  else gcd(j,modulo(i,j));; *)
 
 
 (* let rec combinatorial n m =

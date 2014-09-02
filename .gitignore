@@ -1,6 +1,8 @@
+*/*
 */*.annot
 */*.cmi
 */*.cmt
+*/*.cmx
 */*.opt
 */*.omc
 */.omakedb
