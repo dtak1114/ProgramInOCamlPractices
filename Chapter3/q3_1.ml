@@ -85,7 +85,6 @@ let bmi ((name:string), (height:float),(weight:float)) =
 
 bmi("hoge", 1.85, 75.0);;
 
-
 let sum_and_diff (x,y) = (x+y, x-y);;
 
 let f (sum,diff) = 
@@ -140,7 +139,7 @@ print_endline("\n");;
 (* skip *)
 
 
-(* 3.11 *)
+(* 3.11.1 *)
 let rec gcd (m,n)  = (* m<nのときのmとnの最大公約数*)
   let order_asc (a,b) = if a > b then (b,a) else (a,b) in
   let (i,j) = order_asc(m,n) in
@@ -148,13 +147,18 @@ let rec gcd (m,n)  = (* m<nのときのmとnの最大公約数*)
   if modulo (i,j) = 0 then i
   else gcd(j,modulo(i,j));; 
 
-assert (gcd(24,18) = 6);
+assert (gcd(24,18) = 6);;
+
+(* 3.11.2 *)
+
+let rec comb n m =
+  if (n = m||m = 0) then 1
+  else (comb (n-1) m) + comb (n-1) (m-1);;
+
+assert((comb 3 2) = 3);;
+assert((comb 10 3) = 120 );;
+
+(* 3.11.2 *)
 
 
-(* let rec combinatorial n m =
-  if n = 0 || n == m then 1
-  else combinatorial(n-1,m) + (n-1,m-1);;
 
-
-
- *)
