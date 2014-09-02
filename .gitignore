@@ -3,4 +3,5 @@
 *.cmt
 *.opt
 *.omc
-.omakedv
+.omakedb
+.omakedb.lock
