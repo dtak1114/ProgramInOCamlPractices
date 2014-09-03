@@ -1,9 +1,9 @@
 .PHONY: all install clean run
 FILES[] =
-  q3_14
+  q3_15
 
 USEOCAMLFIND = true
-PROGRAM = q3_14
+PROGRAM = q3_15
 OCAMLFLAGS += -annot -bin-annot
 .DEFAULT: run
 
