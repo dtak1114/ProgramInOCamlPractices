@@ -10,3 +10,34 @@ let rec downto1 n =
 
   
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let rec zip alist blist =
+  match blist with
+  | [] -> []
+  | hb::restb -> (match alist with
+    | [] -> []
+    | ha :: resta -> (ha,hb) :: (zip resta restb)
+  );;
