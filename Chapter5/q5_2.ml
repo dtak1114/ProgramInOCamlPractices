@@ -52,3 +52,12 @@ assert((nested_length[[1;2;3];[4;5];[6];[7;8;9;10]])=(10));;
 
 print_endline("5.2.4");;
 
+print_endline("5.2.5");;
+
+let rec zip alist blist =
+  match blist with
+  | [] -> []
+  | hb::restb -> (match alist with
+    | [] -> []
+    | ha :: resta -> (ha,hb) :: (zip resta restb)
+  );;
