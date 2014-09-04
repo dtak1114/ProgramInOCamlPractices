@@ -1,13 +1,13 @@
 .PHONY: all install clean run
 FILES[] =
-  q5-1
-  q5-2
-  q5-3
-  q5-4
-  q5-5
-  q5-6
-  q5-7
-  q5-8
+  q5_1
+  q5_2
+  q5_3
+  q5_4
+  q5_5
+  q5_6
+  q5_7
+  q5_8
 
 USEOCAMLFIND = true
 PROGRAM = main
