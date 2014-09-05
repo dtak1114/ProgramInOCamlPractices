@@ -6,7 +6,7 @@ let rec downto1 n =
   match n with
   | 0 -> []
   | n' when n' >= 1 -> n' :: downto1 (n-1)
-  | _ -> [];;
+  | _-> [];;
 
 print_endline("5.2.2");;
 
@@ -51,6 +51,13 @@ let rec nested_length l =
 assert((nested_length[[1;2;3];[4;5];[6];[7;8;9;10]])=(10));;
 
 print_endline("5.2.4");;
+let rec concat =
+  function
+    fst :: snd :: rest -> concat ((fst@snd):: rest)
+    | fst :: snd :: [] -> fst @ snd
+    | fst :: [] -> fst;;
+
+assert((concat [[0;3;4];[2];[];[5;0]])=[0;3;4;2;5;0]);;
 
 print_endline("5.2.5");;
 
